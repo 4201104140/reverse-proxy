@@ -1,0 +1,39 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: getting-started
+  name: Getting Started with YARP
+  href: articles/getting-started.html
+- uid: root
+  name: YARP Documentation
+  href: index.html
+- uid: Yarp.ReverseProxy.Configuration
+  name: Yarp.ReverseProxy.Configuration
+  href: api/Yarp.ReverseProxy.Configuration.html
+  commentId: N:Yarp.ReverseProxy.Configuration
+  fullName: Yarp.ReverseProxy.Configuration
+  nameWithType: Yarp.ReverseProxy.Configuration
+- uid: Yarp.ReverseProxy.Configuration.HeaderMatchMode
+  name: HeaderMatchMode
+  href: api/Yarp.ReverseProxy.Configuration.HeaderMatchMode.html
+  commentId: T:Yarp.ReverseProxy.Configuration.HeaderMatchMode
+  fullName: Yarp.ReverseProxy.Configuration.HeaderMatchMode
+  nameWithType: HeaderMatchMode
+- uid: Yarp.ReverseProxy.Configuration.HeaderMatchMode.ExactHeader
+  name: ExactHeader
+  href: api/Yarp.ReverseProxy.Configuration.HeaderMatchMode.html#Yarp_ReverseProxy_Configuration_HeaderMatchMode_ExactHeader
+  commentId: F:Yarp.ReverseProxy.Configuration.HeaderMatchMode.ExactHeader
+  fullName: Yarp.ReverseProxy.Configuration.HeaderMatchMode.ExactHeader
+  nameWithType: HeaderMatchMode.ExactHeader
+- uid: Yarp.ReverseProxy.Configuration.HeaderMatchMode.Exists
+  name: Exists
+  href: api/Yarp.ReverseProxy.Configuration.HeaderMatchMode.html#Yarp_ReverseProxy_Configuration_HeaderMatchMode_Exists
+  commentId: F:Yarp.ReverseProxy.Configuration.HeaderMatchMode.Exists
+  fullName: Yarp.ReverseProxy.Configuration.HeaderMatchMode.Exists
+  nameWithType: HeaderMatchMode.Exists
+- uid: Yarp.ReverseProxy.Configuration.HeaderMatchMode.HeaderPrefix
+  name: HeaderPrefix
+  href: api/Yarp.ReverseProxy.Configuration.HeaderMatchMode.html#Yarp_ReverseProxy_Configuration_HeaderMatchMode_HeaderPrefix
+  commentId: F:Yarp.ReverseProxy.Configuration.HeaderMatchMode.HeaderPrefix
+  fullName: Yarp.ReverseProxy.Configuration.HeaderMatchMode.HeaderPrefix
+  nameWithType: HeaderMatchMode.HeaderPrefix
