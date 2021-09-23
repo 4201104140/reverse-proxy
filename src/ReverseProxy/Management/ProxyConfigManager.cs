@@ -57,6 +57,7 @@ namespace Yarp.ReverseProxy.Management
                         }
                     }
                 }
+                _endpoints = new List<Endpoint>();
                 return _endpoints;
             }
         }
@@ -64,6 +65,10 @@ namespace Yarp.ReverseProxy.Management
         private void CreateEndpoints()
         {
             var endpoints = new List<Endpoint>();
+            // Directly enumerable the ConcurrentDictionary to limit locking and copying.
+            
+
+            UpdateEndpoints(endpoints);
         }
 
         /// <inheritdoc/>
