@@ -5,6 +5,8 @@
 variables:
   - name: _TeamName
     value: AspNetCore
+  - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
+    value: true
   - name: _PublishUsingPipelines
     value: true
   - name: _BuildConfig
@@ -32,6 +34,7 @@ stages:
     parameters:
       enableMicrobuild: true
       enablePublishBuildArtifacts: true
+      enablePublishTestResults: true
       enablePublishBuildAssets: true
       enablePublishUsingPipelines: ${{ variables._PublishUsingPipelines }}
       enableTelemetry: true
@@ -42,6 +45,9 @@ stages:
           ${{ if eq(variables['System.TeamProject'], 'public') }}:
             name: NetCorePublic-Pool
             queue: BuildPool.Windows.10.Amd64.VS2019.Pre.Open
+          ${{ if ne(variables['System.TeamProject'], 'public') }}:
+            name: NetCoreInternal-Pool
+            queue: BuildPool.Windows.10.Amd64.VS2019.Pre
         variables:
 
 
@@ -56,12 +62,27 @@ stages:
                    /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
           - name: _SignType
             value: real
+        # else
+        - ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+          - name: _OfficialBuildArgs
+            value: ''
+          - name: _SignType
+            value: test
 
         steps:
         - checkout: self
           clean: true
         - script: eng\common\cibuild.cmd -configuration $(_BuildConfig) -prepareMachine $(_OfficialBuildArgs)
           displayName: Build and Publish
+        - task: PublishBuildArtifacts@1
+          displayName: Upload TestResults
+          condition: always()
+          continueOnError: true
+          inputs:
+            pathtoPublish: artifacts/TestResults/$(_BuildConfig)/
+            artifactName: $(Agent.Os)_$(Agent.JobName) TestResults
+            artifactType: Container
+            parallel: true
         - task: PublishBuildArtifacts@1
           displayName: Upload package artifacts
           condition: and(succeeded(), eq(variables['system.pullrequest.isfork'], false), eq(variables['_BuildConfig'], 'Release'))
